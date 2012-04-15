@@ -1,5 +1,7 @@
 linuxmuster-client-profile (0.1-precise1) testing; urgency=low
 
   * initial release
+  * Fixed typo in control file
+  * First working script, very raw, but the default users profile gets copied
 
- -- Frank Schiebel <frank@linuxmuster.net>  Sun, 15 Apr 2012 19:39:54 +0200
+ -- Frank Schiebel <frank@linuxmuster.net>  Sun, 15 Apr 2012 21:05:47 +0200

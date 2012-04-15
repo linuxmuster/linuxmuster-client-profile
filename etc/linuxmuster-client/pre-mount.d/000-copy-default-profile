@@ -1,1 +1,47 @@
 !#/bin/bash
+
+
+# source config file
+. /etc/linuxmuster-client/profile.conf || exit 1
+# source profile functions
+. /var/lib/linuxmuster-client-profile/functions.inc || exit 1
+
+# log some info
+$LOGGING && msg2log pre-mount "Entering 000-copy-default-profile $1 $2"
+
+# get environment: returns the following infos:
+#    USER=username
+#    VOLUME=samba volume to be mounted
+#    MNTPT0 mountpoint to mount to
+#    OPTIONS=mount options from pam_mount
+#    SERVER=samba server name/ip
+#
+#    NUMUID=numerical user id
+#    NUMPRIGID=numerical group id (primary group)
+#    FULLNAME=full name of user
+#    HOMEDIR=users homedir, full path 
+#    LOGINSHELL=users login shell, full path
+get_environment "$1" "$2" "$3" "$4" "$5"
+
+$LOGGING && msg2log pre-mount "Environment: USER=$USER VOLUME=$VOLUME MNPT=$MNTPT OPTIONS=$OPTIONS SERVER=$SERVER NUMUID=$NUMUID NUMPRIGID=$NUMPRIGID FULLNAME=$FULLNAME HOMEDIR=$HOMEDIR LOGINSHELL=$LOGINSHELL"
+
+# this script gets executed only once, before the users home from the 
+# server gets mounted. in this case $USER and $VOLUME are the same
+if [ $USER != $VOLUME ]; then 
+    exit 0
+fi
+
+if [ $USER == "$PROFILE_USER" ]; then 
+    exit 0
+fi
+
+# log success
+$LOGGING && msg2log pre-mount "We are mounting users home, copy default profile"
+
+rm -rf $HOMEDIR
+cp -r /home/$PROFILE_USER $HOMEDIR
+mkdir -p $MNTPT
+chown -R $USER $HOMEDIR
+
+
+

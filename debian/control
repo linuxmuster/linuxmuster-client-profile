@@ -1,14 +1,14 @@
 Source: linuxmuster-client-profile
 Section: debian-linuxmuster
 Priority: optional
- aintainer: Frank Schiebel <frank@linuxmuster.net>
+Maintainer: Frank Schiebel <frank@linuxmuster.net>
 Build-Depends: debhelper (>= 4.0.0)
 Standards-Version: 3.6.0
 
 Package: linuxmuster-client-profile
 Architecture: all
 Conflicts: linuxmuster-base
-Depends: linuxmuster-client-auth  linuxmuster-client-shares
+Depends: linuxmuster-client-auth, linuxmuster-client-shares
 Description: Linux-Musterloesung client configuration scripts
  This package provides configuration and scripts for debian-based
  clients for managing a default userprofile in the Linux Musterlösung

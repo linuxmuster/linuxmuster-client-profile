@@ -1,7 +1,9 @@
-linuxmuster-client-profile (0.1-precise1) testing; urgency=low
+linuxmuster-client-profile (0.1-precise2) testing; urgency=low
 
   * initial release
   * Fixed typo in control file
   * First working script, very raw, but the default users profile gets copied
+  * Moved profile-user-check to linuxmuster-client-shares
+    linuxmuster-pam-mount
 
- -- Frank Schiebel <frank@linuxmuster.net>  Sun, 15 Apr 2012 21:05:47 +0200
+ -- Frank Schiebel <frank@linuxmuster.net>  Mon, 16 Apr 2012 12:19:21 +0200

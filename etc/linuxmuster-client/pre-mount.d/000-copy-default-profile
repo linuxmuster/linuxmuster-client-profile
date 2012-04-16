@@ -1,5 +1,4 @@
-!#/bin/bash
-
+# this file is sourced from /usr/sbin/linuxmuster-pam-mount
 
 # source config file
 . /etc/linuxmuster-client/profile.conf || exit 1
@@ -28,10 +27,6 @@ $LOGGING && msg2log pre-mount "Environment: USER=$USER VOLUME=$VOLUME MNPT=$MNTP
 # this script gets executed only once, before the users home from the 
 # server gets mounted. in this case $USER and $VOLUME are the same
 if [ $USER != $VOLUME ]; then 
-    exit 0
-fi
-
-if [ $USER == "$PROFILE_USER" ]; then 
     exit 0
 fi
 

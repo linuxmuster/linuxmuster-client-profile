@@ -27,7 +27,7 @@ $LOGGING && msg2log pre-mount "Environment: USER=$USER VOLUME=$VOLUME MNPT=$MNTP
 # this script gets executed only once, before the users home from the 
 # server gets mounted. in this case $USER and $VOLUME are the same
 if [ $USER != $VOLUME ]; then 
-    exit 0
+    return 0
 fi
 
 # log success

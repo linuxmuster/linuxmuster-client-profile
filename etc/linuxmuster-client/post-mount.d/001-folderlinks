@@ -1,0 +1,26 @@
+# this file is sourced from /usr/sbin/linuxmuster-pam-mount
+
+# log some info
+$LOGGING && msg2log post-mount "Entering 001-folderlinks $1 $2"
+$LOGGING && msg2log post-mount "Environmenti settings are: USER=$USER VOLUME=$VOLUME MNPT=$MNTPT OPTIONS=$OPTIONS SERVER=$SERVER NUMUID=$NUMUID NUMPRIGID=$NUMPRIGID FULLNAME=$FULLNAME HOMEDIR=$HOMEDIR LOGINSHELL=$LOGINSHELL"
+
+# this script gets executed only once, after the users home from the
+# server gets mounted. in this case $USER and $VOLUME are the same
+if [ $USER != $VOLUME ]; then
+    return 0
+fi
+
+# log success
+$LOGGING && msg2log post-mount "We mounted the users home, copy default profile"
+
+for i in Bilder Dokumente Musik Downloads Videos; do
+    $LOGGING && msg2log post-mount "rm -rf $HOMEDIR/$i"
+    rm -rf $HOMEDIR/$i
+    mkdir -p $HOMEDIR/Home_auf_Server/Eigene\ Dateien/$i
+    $LOGGING && msg2log post-mount "ln -s $HOMEDIR/Home_auf_Server/Eigene\ Dateien/$i $HOMEDIR"
+    ln -s $HOMEDIR/Home_auf_Server/Eigene\ Dateien/$i $HOMEDIR
+done
+
+ln -s $HOMEDIR/Home_auf_Server/Eigene\ Dateien $HOMEDIR/Arbeitsfläche
+
+

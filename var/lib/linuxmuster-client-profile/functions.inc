@@ -22,3 +22,14 @@ get_environment() {
     HOMEDIR=`echo $TEMP | cut -d: -f 6`
     LOGINSHELL=`echo $TEMP | cut -d: -f 7`
 }
+
+# Reads simple config file with one value per line,
+# ignoring lines starting with a '#'
+#
+# @arg Configfile
+# @ret White space separated list of items
+
+read_simple_config() {
+    configlines=$(egrep -v '^\s*#' $1)
+    return $configlines
+}

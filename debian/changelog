@@ -1,3 +1,14 @@
+linuxmuster-client-profile (0.5-precise5) linuxmuster-client; urgency=low
+
+  * Linking folders in post-mount
+  * Get environmnt in the first script file to reduce overhead
+  * Removed postinst skript
+  * Moved main configuration file to "profile" subdir for consistency
+  * Added script to insert nautilus bookmarks
+  * Added function to read simple conf files with comments
+
+ -- Frank Schiebel <frank@linuxmuster.net>  Thu, 26 Apr 2012 22:18:35 +0200
+
 linuxmuster-client-profile (0.1-precise3) linuxmuster-client; urgency=low
 
   * initial release

@@ -1,3 +1,14 @@
+linuxmuster-client-profile (0.5-precise7) linuxmuster-client; urgency=low
+
+  * Fixed options sequence in functions.inc
+  * Fixed wrong path to config file
+  * Added modified sshplus-script for usermenu
+  * Added autostart skript to start sshplus at login
+  * Changed profile sync method from copy to rsync, added option for rsync to
+    be configured in config file.
+
+ -- Frank Schiebel <frank@linuxmuster.net>  Thu, 04 Sep 2012 13:45:35 +0200
+
 linuxmuster-client-profile (0.5-precise5) linuxmuster-client; urgency=low
 
   * Linking folders in post-mount

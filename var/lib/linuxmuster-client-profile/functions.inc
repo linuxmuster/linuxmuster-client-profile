@@ -11,8 +11,8 @@ get_environment() {
     USER=$1
     VOLUME=$2
     MNTPT=$3
-    OPTIONS=$4
-    SERVER=$5
+    SERVER=$4
+    OPTIONS=$5
 
     local TEMP=`getent passwd $USER`
 

@@ -1,7 +1,7 @@
 # this file is sourced from /usr/sbin/linuxmuster-pam-mount
 
 # source config file
-. /etc/linuxmuster-client/profile.conf || exit 1
+. /etc/linuxmuster-client/profile/profile.conf || exit 1
 # source profile functions
 . /var/lib/linuxmuster-client-profile/functions.inc || exit 1
 
@@ -19,7 +19,7 @@ fi
 # log success
 $LOGGING && msg2log pre-mount "We are mounting users home, copy default profile"
 
-rm -rf $HOMEDIR
-cp -r /home/$PROFILE_USER $HOMEDIR
+rsync -r $RSYNC_OPTIONS /home/$PROFILE_USER/ $HOMEDIR/
+
 mkdir -p $MNTPT
 chown -R $USER $HOMEDIR

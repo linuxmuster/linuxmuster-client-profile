@@ -1,2 +1,4 @@
 var/lib/linuxmuster-client-profile/*      /var/lib/linuxmuster-client-profile/
 etc/linuxmuster-client/*   /etc/linuxmuster-client
+etc/xdg/autostart/*        /etc/xdg/autostart/
+usr/bin/*   /usr/bin/

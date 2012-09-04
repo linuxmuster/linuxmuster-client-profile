@@ -5,15 +5,6 @@
 # Dieses Script verlinkt Konfigurationsdateien im Serverhome
 # (unter Einstellungen) mit dem lokalen Home,
 # in dem die Programme nach den Konfigurationen suchen.
-# TODO:
-# Vorab soll noch eine Überprüfung stattfinden, ob 
-# Konfigurationsdateien auf einem Wechselmedium mit dem
-# Namen "profile" im Verzeichnis "Einstellungen" vorliegen.
-# Dann werden diese anstatt der Daten im Serverhome verwendet.
-# dazu wird die Variable SERVEREINSTELLUNGEN entsprechend
-# von "$HOMEDIR/Home_auf_Server/Einstellungen" auf
-# "/media/profile/Einstellungen" angepasst 
-# (-> Aufrufe entsprechend korrigieren!)
 
 if [ -f /etc/linuxmuster-client/profile/usersettings.conf ]
 then

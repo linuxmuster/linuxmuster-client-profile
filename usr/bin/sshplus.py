@@ -84,7 +84,9 @@ def menuitem_response(w, item):
         pynotify.init("sshplus")
         pynotify.Notification("SSHplus refreshed", "Menu list was refreshed from %s" % _SETTINGS_FILE).show()
     elif item == '_quit':
-        sys.exit(0)
+        show_help_dlg(_ABOUT_TXT)
+#        exit durch about ersetzt, sonst kann sshplus einfach beendet werden 
+#        sys.exit(0)
     elif item == 'folder':
         pass
     else:

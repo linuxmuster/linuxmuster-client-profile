@@ -13,14 +13,16 @@ fi
 # log success
 $LOGGING && msg2log post-mount "We mounted the users home, copy default profile"
 
-for i in Bilder Dokumente Musik Downloads Videos; do
-    $LOGGING && msg2log post-mount "rm -rf $HOMEDIR/$i"
-    rm -rf $HOMEDIR/$i
-    mkdir -p $HOMEDIR/Home_auf_Server/Eigene\ Dateien/$i
-    $LOGGING && msg2log post-mount "ln -s $HOMEDIR/Home_auf_Server/Eigene\ Dateien/$i $HOMEDIR"
-    ln -s $HOMEDIR/Home_auf_Server/Eigene\ Dateien/$i $HOMEDIR
-done
+# Einrichtung dieser Verzeichnisse ab-/anschaltbar machen
+# einzelne Elemente in Konfigurationsdatei eintragen
+#for i in Bilder Dokumente Musik Downloads Videos; do
+#    $LOGGING && msg2log post-mount "rm -rf $HOMEDIR/$i"
+#    rm -rf $HOMEDIR/$i
+#    mkdir -p $HOMEDIR/Home_auf_Server/Eigene\ Dateien/$i
+#    $LOGGING && msg2log post-mount "ln -s $HOMEDIR/Home_auf_Server/Eigene\ Dateien/$i $HOMEDIR"
+#    ln -s $HOMEDIR/Home_auf_Server/Eigene\ Dateien/$i $HOMEDIR
+#done
 
-ln -s $HOMEDIR/Home_auf_Server/Eigene\ Dateien $HOMEDIR/Arbeitsfläche
-
-
+# unnoetig, wenn "Home_auf_Server" schon auf Desktop liegt
+#ln -s $HOMEDIR/Home_auf_Server/Eigene\ Dateien $HOMEDIR/Arbeitsfläche
+#ln -s $HOMEDIR/Home_auf_Server/Eigene\ Dateien $HOMEDIR/Desktop/Eigene\ Dateien

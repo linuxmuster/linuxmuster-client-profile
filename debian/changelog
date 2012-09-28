@@ -1,3 +1,17 @@
+linuxmuster-client-profile (0.5-precise9) precise-testing; urgency=low
+
+  * aktuellste Versionsnummer
+
+ -- rainer <roe@bszleo.de>  Tue, 18 Sep 2012 15:37:23 +0200
+
+linuxmuster-client-profile (0.5-precise8) linuxmuster-client-testing; urgency=low
+
+  * profil-Verzeichnisse im Serverhome unter Einstellungen können verlinkt werden in das lokale home des Benutzers. Konfiguration über /etc/linuxmuster-client/profile/usersettings.conf und usersettings-opt.conf
+  * verschiedene Standardkonfigurationen auskommentiert
+    -> Standard BSZ Leonberg 
+
+ -- rainer <roe@bszleo.de>  Tue, 18 Sep 2012 15:33:33 +0200
+
 linuxmuster-client-profile (0.5-precise7) linuxmuster-client; urgency=low
 
   * Fixed options sequence in functions.inc

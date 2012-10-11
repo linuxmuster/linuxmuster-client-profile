@@ -37,9 +37,17 @@ fi
 #  oder "libreoffice:.config/libreoffice").
 
 SERVEREINSTELLUNGEN="Home_auf_Server/Einstellungen"
-
 # Hier ist der Ort anzugeben, an dem die Konfigurationen
 # auf dem Server liegen
+
+# Ist das Verzeichnis $SERVEREINSTELLUNGEN nicht vorhanden, 
+# wird es angelegt
+if [ -d $HOMEDIR/$SERVEREINSTELLUNGEN ]
+then
+ cd ~
+else 
+ mkdir -p $HOMEDIR/$SERVEREINSTELLUNGEN
+fi
 
 # Die Variable $HOMEDIR wird übergreifend gesetzt
 # daher auskommentiert

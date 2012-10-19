@@ -8,7 +8,7 @@
 
 if [ -f /etc/linuxmuster-client/profile/usersettings.conf ]
 then
- ZWANGSLINKS=`cat /etc/linuxmuster-client/profile/usersettings.conf`
+ ZWANGSLINKS=`cat /etc/linuxmuster-client/profile/usersettings.conf | grep ^[^#\ ]`
 else
  ZWANGSLINKS=""
 fi
@@ -20,7 +20,7 @@ fi
 
 if [ -f /etc/linuxmuster-client/profile/usersettings-opt.conf ]
 then
- OPTLINKS=`cat /etc/linuxmuster-client/profile/usersettings-opt.conf`
+ OPTLINKS=`cat /etc/linuxmuster-client/profile/usersettings-opt.conf | grep ^[^#\ ]`
 else
  OPTLINKS=""
 fi

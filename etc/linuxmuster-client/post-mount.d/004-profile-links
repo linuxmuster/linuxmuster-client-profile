@@ -26,7 +26,7 @@ else
 fi
 
 # Optionale Links werden in usersettings-opt.conf eingetragen.
-# Ist hier ein "*:*" (Quelle Serverhome:Ziel lokales Home) 
+# Ist hier ein "ALL:ALL" (Quelle Serverhome:Ziel lokales Home) 
 # eingetragen, werden alle Konfigurationsdateien
 # im Serverhome unter Einstellungen mit der gleichnamigen
 # Konfigurationsdatei im lokalen Home verlinkt
@@ -115,7 +115,7 @@ done
 # Für die Konfigurationen auf dem Serverhome (unter Einstellungen)
 # werden Links ins lokale Home erzeugt, sofern die 
 # Konfigurationen unter usersettings.conf oder usersettings-opt.conf
-# aufgeführt sind, bzw. ein "*:*" enthalten ist (dann werden alle
+# aufgeführt sind, bzw. ein "ALL:ALL" enthalten ist (dann werden alle
 # verlinkt).
 
 # Alle Dateien im Serverhome unter Einstellungen werden eingelesen
@@ -126,8 +126,8 @@ ZIELE=`echo $ZIELE | cut -b 6-`
 
 
 # Alle vorgesehenen Konfigurationen einlesen
-# ist ein "*" enthalten?
-if [ "`echo $OPTLINKS | grep "*"`" = "" ]
+# ist ein "ALL:ALL" enthalten?
+if [ "`echo $OPTLINKS | grep "ALL:ALL"`" = "" ]
 then 
  ALLE="0"
 else
@@ -138,7 +138,7 @@ ALLEKONF=`echo $ZWANGSLINKS $OPTLINKS`
 
 # Alle eingelesenen Dateien aus Serverhome werden mit dem 
 # lokalen home verlinkt, sofern entsprechende Einträge (ALLE=0)
-# oder "*" gefunden wird (ALLE=1).
+# oder "ALL:ALL" gefunden wird (ALLE=1).
 
 #echo $ZIELE
 
@@ -146,7 +146,7 @@ for LINKZIEL in $ZIELE; do
 
  if [ "`echo $ALLEKONF | grep $LINKZIEL`" = "" ]
  then
-  # keine Konfiguration gesetzt, Link setzen, wenn "*" gesetzt (ALLE=1)
+  # keine Konfiguration gesetzt, Link setzen, wenn "ALL:ALL" gesetzt (ALLE=1)
   if [ "$ALLE" = "1" ]
   then
    rm -rf $HOMEDIR/$LINKZIEL

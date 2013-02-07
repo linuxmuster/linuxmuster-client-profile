@@ -1,3 +1,9 @@
+linuxmuster-client-profile (0.5-precise10) precise; urgency=low
+
+  * Verzeichnis "Einstellungen" unter "Home_auf_Server" wird erstellt, falls nicht vorhanden.
+
+ -- Rainer Roessler <roesslerrr@web.de>  Thu, 11 Oct 2012 20:33:19 +0200
+
 linuxmuster-client-profile (0.5-precise9) precise-testing; urgency=low
 
   * aktuellste Versionsnummer

@@ -1,3 +1,10 @@
+linuxmuster-client-profile (0.5-precise12) precise; urgency=low
+
+  * wildcard-Eintrag in usersettings-opt.conf fuehrte zu einem Fehlschlagen als
+  * wildcard für Profile - ersetzt durch ALL:ALL 
+
+ -- Rainer Roessler <roesslerrr@web.de>  Thu, 07 Feb 2013 16:57:13 +0100
+
 linuxmuster-client-profile (0.5-precise10) precise; urgency=low
 
   * Verzeichnis "Einstellungen" unter "Home_auf_Server" wird erstellt, falls nicht vorhanden.

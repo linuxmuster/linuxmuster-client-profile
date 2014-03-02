@@ -1,3 +1,9 @@
+linuxmuster-client-profile (0.5-trusty1) trusty-testing; urgency=low
+
+  * Setting version to trusty, creating git branch
+
+ -- Frank Schiebel <frank@linuxmuster.net>  Sun, 02 Mar 2014 15:05:51 +0100
+
 linuxmuster-client-profile (0.5-precise12) precise; urgency=low
 
   * wildcard-Eintrag in usersettings-opt.conf fuehrte zu einem Fehlschlagen als

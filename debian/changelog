@@ -1,6 +1,7 @@
-linuxmuster-client-profile (0.5-trusty2) trusty-testing; urgency=low
+linuxmuster-client-profile (0.5-trusty2) trusty; urgency=low
 
   * Added python-appindicator as dependency
+  * Changed target repo to trusty
 
  -- Frank Schiebel <frank@linuxmuster.net>  Tue, 15 Apr 2014 17:29:33 +0200
 

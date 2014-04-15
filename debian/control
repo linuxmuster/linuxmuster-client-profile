@@ -8,7 +8,7 @@ Standards-Version: 3.6.0
 Package: linuxmuster-client-profile
 Architecture: all
 Conflicts: linuxmuster-base
-Depends: linuxmuster-client-auth, linuxmuster-client-shares python-appindicator
+Depends: linuxmuster-client-auth, linuxmuster-client-shares, python-appindicator
 Description: Linux-Musterloesung client configuration scripts
  This package provides configuration and scripts for debian-based
  clients for managing a default userprofile in the Linux Musterlösung

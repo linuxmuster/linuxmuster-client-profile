@@ -1,4 +1,4 @@
-linuxmuster-client-profile (0.5-trusty2) precise; urgency=low
+linuxmuster-client-profile (0.5-trusty2) trusty-testing; urgency=low
 
   * Added python-appindicator as dependency
 

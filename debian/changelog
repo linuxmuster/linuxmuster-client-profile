@@ -1,3 +1,9 @@
+linuxmuster-client-profile (0.5-trusty2) precise; urgency=low
+
+  * Added python-appindicator as dependency
+
+ -- Frank Schiebel <frank@linuxmuster.net>  Tue, 15 Apr 2014 17:29:33 +0200
+
 linuxmuster-client-profile (0.5-trusty1) trusty-testing; urgency=low
 
   * Setting version to trusty, creating git branch
@@ -7,7 +13,7 @@ linuxmuster-client-profile (0.5-trusty1) trusty-testing; urgency=low
 linuxmuster-client-profile (0.5-precise12) precise; urgency=low
 
   * wildcard-Eintrag in usersettings-opt.conf fuehrte zu einem Fehlschlagen als
-  * wildcard für Profile - ersetzt durch ALL:ALL 
+  * wildcard für Profile - ersetzt durch ALL:ALL
 
  -- Rainer Roessler <roesslerrr@web.de>  Thu, 07 Feb 2013 16:57:13 +0100
 

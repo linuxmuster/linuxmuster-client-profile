@@ -1,22 +1,18 @@
 linuxmuster-client-profile (0.6-precise1) precise; urgency=low
 
-  * Leerzeichen in Profildateien/verzeichnissen werden nun korrekt 
-	verarbeitet und verlinkt.
-  * Das Verzeichnis in dem die Konfigurationen abgelegt werden, kann in
-	der Konfigurationsdatei home-preferences.conf eingestellt werden.
-  * Das Verzeichnis mit dem das Heimatverzeichnis auf dem Server 
-	verbunden ist, kann in linuxmuster-client.conf eingestellt werden.
+  * Leerzeichen in Namen von Konfigurationsdateien werden unterstützt
+  * Konfigurationsdatei linuxmuster-client.conf mit Basiskonfiguration
+  * Konfigurationsdatei home-preference.conf um Einstellungsverzeichnis 
+	konfigurierbar zu machen
 
- -- Rainer Roessler <rainer@linuxmuster.de>  Wed, 14 May 2014 00:09:02 +0200
+ -- Rainer Roessler <rainer@linuxmuster.de>  Wed, 14 May 2014 00:39:08 +0200
 
-=======
 linuxmuster-client-profile (0.5-precise12) precise; urgency=low
 
   * wildcard-Eintrag in usersettings-opt.conf fuehrte zu einem Fehlschlagen als
   * wildcard für Profile - ersetzt durch ALL:ALL 
 
  -- Rainer Roessler <roesslerrr@web.de>  Thu, 07 Feb 2013 16:57:13 +0100
->>>>>>> 699007197baf69ff02d50133aad6f6a4966070eb
 
 linuxmuster-client-profile (0.5-precise10) precise; urgency=low
 
@@ -28,7 +24,7 @@ linuxmuster-client-profile (0.5-precise9) precise-testing; urgency=low
 
   * aktuellste Versionsnummer
 
- -- rainer <roesslerrr@web.de>  Tue, 18 Sep 2012 15:37:23 +0200
+ -- rainer <roe@bszleo.de>  Tue, 18 Sep 2012 15:37:23 +0200
 
 linuxmuster-client-profile (0.5-precise8) linuxmuster-client-testing; urgency=low
 
@@ -36,7 +32,7 @@ linuxmuster-client-profile (0.5-precise8) linuxmuster-client-testing; urgency=lo
   * verschiedene Standardkonfigurationen auskommentiert
     -> Standard BSZ Leonberg 
 
- -- rainer <roesslerrr@web.de>  Tue, 18 Sep 2012 15:33:33 +0200
+ -- rainer <roe@bszleo.de>  Tue, 18 Sep 2012 15:33:33 +0200
 
 linuxmuster-client-profile (0.5-precise7) linuxmuster-client; urgency=low
 

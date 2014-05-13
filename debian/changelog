@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 linuxmuster-client-profile (0.6-precise1) precise; urgency=low
 
   * Leerzeichen in Profildateien/verzeichnissen werden nun korrekt 
@@ -9,7 +7,8 @@ linuxmuster-client-profile (0.6-precise1) precise; urgency=low
   * Das Verzeichnis mit dem das Heimatverzeichnis auf dem Server 
 	verbunden ist, kann in linuxmuster-client.conf eingestellt werden.
 
- -- Rainer Roessler <rainer@linuxmuster.de>  Tue, 13 Mai 2014 23:17:27 +0200
+ -- Rainer Roessler <rainer@linuxmuster.de>  Wed, 14 May 2014 00:09:02 +0200
+
 =======
 linuxmuster-client-profile (0.5-precise12) precise; urgency=low
 

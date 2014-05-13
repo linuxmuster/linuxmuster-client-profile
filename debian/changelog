@@ -1,3 +1,10 @@
+linuxmuster-client-profile (0.6-precise2) precise; urgency = low
+
+  * etc/linuxmuster-client/post-mount.d/000-environment entfernt
+	(ist jetzt im Paket linuxmuster-client-share)
+
+ -- Rainer Roessler <rainer@linuxmuster.net>  Wed, 14 May 2014 01:22:52 +0200
+
 linuxmuster-client-profile (0.6-precise1) precise; urgency=low
 
   * Leerzeichen in Namen von Konfigurationsdateien werden unterstützt
@@ -5,7 +12,7 @@ linuxmuster-client-profile (0.6-precise1) precise; urgency=low
   * Konfigurationsdatei home-preference.conf um Einstellungsverzeichnis 
 	konfigurierbar zu machen
 
- -- Rainer Roessler <rainer@linuxmuster.de>  Wed, 14 May 2014 00:39:08 +0200
+ -- Rainer Roessler <rainer@linuxmuster.net>  Wed, 14 May 2014 00:39:08 +0200
 
 linuxmuster-client-profile (0.5-precise12) precise; urgency=low
 

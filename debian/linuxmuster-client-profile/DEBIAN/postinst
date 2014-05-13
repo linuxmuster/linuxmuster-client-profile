@@ -1,0 +1,6 @@
+#!/bin/bash
+#
+# postinst script for linuxmuster-client
+
+exit 0
+

@@ -26,7 +26,7 @@ else
 fi
 
 # Optionale Links werden in usersettings-opt.conf eingetragen.
-# Ist hier ein "ALL:ALL" (Quelle Serverhome:Ziel lokales Home) 
+# Ist hier ein "*:*" (Quelle Serverhome:Ziel lokales Home) 
 # eingetragen, werden alle Konfigurationsdateien
 # im Serverhome unter Einstellungen mit der gleichnamigen
 # Konfigurationsdatei im lokalen Home verlinkt
@@ -36,30 +36,9 @@ fi
 # (z.B. "firefox:.mozilla/firefox/123xyz.default"
 #  oder "libreoffice:.config/libreoffice").
 
-# Konfiguration einlesen für                                                                                                         
-# Basics zu linuxmuster-clients                                                                                                      
-. /etc/linuxmuster-client/linuxmuster-client.conf || exit 1
-# Verzeichnis für Einstellungen im Heimatverzeichnis auf dem Server                                                                  
-. /etc/linuxmuster-client/profile/home-preference.conf || exit 1                                                                     
-# Verzeichnisnamen über Links                                                                                                        
-#. /etc/linuxmuster-client/shares/linkfoldername.conf || exit 1
-
+SERVEREINSTELLUNGEN="Home_auf_Server/Einstellungen"
 # Hier ist der Ort anzugeben, an dem die Konfigurationen
 # auf dem Server liegen
-#SERVEREINSTELLUNGEN="Home_auf_Server/Einstellungen"
-SERVEREINSTELLUNGEN=`echo $HOMEFOLDERNAME/$HOMEPREFERENCEFOLDERNAME`
-
-# Die Variable $HOMEDIR wird übergreifend gesetzt
-# daher auskommentiert
-#HOMEDIR="`pwd`"
- 
-# Dieses Script soll nur einmal ausgeführt werden.
-# Nur nachdem das Serverhome des Benutzers gemountet wurde,
-# sind $USER und $VOLUME identisch, in allen anderen Fällen
-# bricht das Script ab.
-if [ $USER != $VOLUME ]; then
-    return 0
-fi
 
 # Ist das Verzeichnis $SERVEREINSTELLUNGEN nicht vorhanden, 
 # wird es angelegt
@@ -70,10 +49,19 @@ else
  mkdir -p $HOMEDIR/$SERVEREINSTELLUNGEN
 fi
 
-# Um in den Schleifen Inhalte mit Leerzeichen verarbeiten zu können,
-# die durch das Leerzeichen nicht als getrennte Inhalte interpretiert werden
-# wird folgende Option IFS=$'\012' gesetzt
-IFS=$'\012'
+# Die Variable $HOMEDIR wird übergreifend gesetzt
+# daher auskommentiert
+# HOMEDIR="`pwd`"
+ 
+
+# Dieses Script soll nur einmal ausgeführt werden.
+# Nur nachdem das Serverhome des Benutzers gemountet wurde,
+# sind $USER und $VOLUME identisch, in allen anderen Fällen
+# bricht das Script ab.
+if [ $USER != $VOLUME ]; then
+    return 0
+fi
+
 
 # Serverkonfigurationen nach ZWANGSLINKS erzeugen
 
@@ -89,7 +77,7 @@ for ZWANG in $ZWANGSLINKS; do
  # (also das lokal vorhandene) kopiert.
 
  # Konfigurationsverzeichnisse
-
+    
  if [ -d `echo $HOMEDIR/$SERVEREINSTELLUNGEN/$SERVER` ]
  then
   cd $HOMEDIR
@@ -129,26 +117,25 @@ for ZWANG in $ZWANGSLINKS; do
  
 done
 
-
 # Konfigurationen im Serverhome erzeugt
 
 
 # Für die Konfigurationen auf dem Serverhome (unter Einstellungen)
 # werden Links ins lokale Home erzeugt, sofern die 
 # Konfigurationen unter usersettings.conf oder usersettings-opt.conf
-# aufgeführt sind, bzw. ein "ALL:ALL" enthalten ist (dann werden alle
+# aufgeführt sind, bzw. ein "*:*" enthalten ist (dann werden alle
 # verlinkt).
 
 # Alle Dateien im Serverhome unter Einstellungen werden eingelesen
-ZIELE=`ls -A $HOMEDIR/$SERVEREINSTELLUNGEN/`
+ZIELE=`ls -a $HOMEDIR/$SERVEREINSTELLUNGEN/`
 
 # ". .." werden entfernt
-#ZIELE=`echo $ZIELE | cut -b 6-`
-# mit Option -A nicht mehr notwendig
+ZIELE=`echo $ZIELE | cut -b 6-`
+
 
 # Alle vorgesehenen Konfigurationen einlesen
-# ist ein "ALL:ALL" enthalten?
-if [ "`echo $OPTLINKS | grep "ALL:ALL"`" = "" ]
+# ist ein "*" enthalten?
+if [ "`echo $OPTLINKS | grep "*"`" = "" ]
 then 
  ALLE="0"
 else
@@ -159,51 +146,34 @@ ALLEKONF=`echo $ZWANGSLINKS $OPTLINKS`
 
 # Alle eingelesenen Dateien aus Serverhome werden mit dem 
 # lokalen home verlinkt, sofern entsprechende Einträge (ALLE=0)
-# oder "ALL:ALL" gefunden wird (ALLE=1).
+# oder "*" gefunden wird (ALLE=1).
+
+#echo $ZIELE
 
 for LINKZIEL in $ZIELE; do
 
  if [ "`echo $ALLEKONF | grep $LINKZIEL`" = "" ]
  then
-  # wenn keine Konfiguration gesetzt ist und
-  # "ALL:ALL" gesetzt (-> ALLE=1)
-  # wird der Link 1:1 gesetzt (LINKZIEL <-> LINKZIEL)
+  # keine Konfiguration gesetzt, Link setzen, wenn "*" gesetzt (ALLE=1)
   if [ "$ALLE" = "1" ]
   then
    rm -rf $HOMEDIR/$LINKZIEL
    ln -s $HOMEDIR/$SERVEREINSTELLUNGEN/$LINKZIEL $HOMEDIR/$LINKZIEL
   fi
  else 
-  # anderenfalls gibt es einen Konfiguration für die Einstellungen
-  # dann wird das Ziel bestimmt und der Link gesetzt
- 
-  # zunächst werden Zwangslinks durchsucht
-  # ein vorheriges Zusammensetzen von optionalen und Zwangslinks
-  # funktioniert nicht, das dann alles als eine Zeile interpretiert wird
-  
-  for EINZEL in $ZWANGSLINKS; do
-   if [ "`echo $EINZEL | grep $LINKZIEL`" == "" ] 
-   then
-    cd ~
-   else
-    LOKAL=`echo $EINZEL | cut -d ":" -f 2`
-    rm -rf $HOMEDIR/$LOKAL
-    ln -s $HOMEDIR/$SERVEREINSTELLUNGEN/$LINKZIEL $HOMEDIR/$LOKAL
-   fi 
-  done
-  
-  # dann werden optionale Links durchsucht
-  for EINZEL in $OPTLINKS; do
-   if [ "`echo $EINZEL | grep $LINKZIEL`" == "" ] 
-   then
-    cd ~
-   else
-    LOKAL=`echo $EINZEL | cut -d ":" -f 2`
-    rm -rf $HOMEDIR/$LOKAL
-    ln -s $HOMEDIR/$SERVEREINSTELLUNGEN/$LINKZIEL $HOMEDIR/$LOKAL
-   fi 
-  done
+  # gefunden -> Ziel bestimmen -> Link setzen 
 
+  for EINZEL in $ALLEKONF; do
+
+   if [ "`echo $EINZEL | grep $LINKZIEL`" == "" ] 
+   then
+    cd ~
+   else
+    LOKAL=`echo $EINZEL | cut -d ":" -f 2`
+    rm -rf $HOMEDIR/$LOKAL
+    ln -s $HOMEDIR/$SERVEREINSTELLUNGEN/$LINKZIEL $HOMEDIR/$LOKAL
+   fi 
+  done
   
  fi
 

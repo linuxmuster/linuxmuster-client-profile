@@ -1,0 +1,29 @@
+# this file is sourced from /usr/sbin/linuxmuster-pam-mount
+# it sets the environment for all the following pre-mount scripts
+# it has to be the first sript to be executed in this directory
+# for the environment setting to work!
+
+
+# source config file
+. /etc/linuxmuster-client/profile/profile.conf || exit 1
+# source profile functions
+. /var/lib/linuxmuster-client-profile/functions.inc || exit 1
+
+# log some info
+$LOGGING && msg2log post-mount "Entering 000-environmnt $1 $2"
+
+# get environment: returns the following infos:
+#    USER=username
+#    VOLUME=samba volume to be mounted
+#    MNTPT0 mountpoint to mount to
+#    OPTIONS=mount options from pam_mount
+#    SERVER=samba server name/ip
+#
+#    NUMUID=numerical user id
+#    NUMPRIGID=numerical group id (primary group)
+#    FULLNAME=full name of user
+#    HOMEDIR=users homedir, full path
+#    LOGINSHELL=users login shell, full path
+get_environment "$1" "$2" "$3" "$4" "$5"
+
+$LOGGING && msg2log post-mount "Environment set: USER=$USER VOLUME=$VOLUME MNPT=$MNTPT OPTIONS=$OPTIONS SERVER=$SERVER NUMUID=$NUMUID NUMPRIGID=$NUMPRIGID FULLNAME=$FULLNAME HOMEDIR=$HOMEDIR LOGINSHELL=$LOGINSHELL"

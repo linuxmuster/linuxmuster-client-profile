@@ -1,9 +1,18 @@
+<<<<<<< HEAD
 linuxmuster-client-profile (0.5-precise11) precise; urgency=low
 
   * mit "#" und " " beginnende Zeilen in usersettings.conf und usersettings-opt.conf 
     werden als Kommentar gewertet und überlesen
 
  -- Rainer Roessler <roesslerrr@web.de>  Fri, 19 Oct 2012 22:09:27 +0200
+=======
+linuxmuster-client-profile (0.5-precise12) precise; urgency=low
+
+  * wildcard-Eintrag in usersettings-opt.conf fuehrte zu einem Fehlschlagen als
+  * wildcard für Profile - ersetzt durch ALL:ALL 
+
+ -- Rainer Roessler <roesslerrr@web.de>  Thu, 07 Feb 2013 16:57:13 +0100
+>>>>>>> 699007197baf69ff02d50133aad6f6a4966070eb
 
 linuxmuster-client-profile (0.5-precise10) precise; urgency=low
 

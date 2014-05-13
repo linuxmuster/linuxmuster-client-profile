@@ -1,10 +1,15 @@
 <<<<<<< HEAD
-linuxmuster-client-profile (0.5-precise11) precise; urgency=low
 
-  * mit "#" und " " beginnende Zeilen in usersettings.conf und usersettings-opt.conf 
-    werden als Kommentar gewertet und überlesen
+linuxmuster-client-profile (0.6-precise1) precise; urgency=low
 
- -- Rainer Roessler <roesslerrr@web.de>  Fri, 19 Oct 2012 22:09:27 +0200
+  * Leerzeichen in Profildateien/verzeichnissen werden nun korrekt 
+	verarbeitet und verlinkt.
+  * Das Verzeichnis in dem die Konfigurationen abgelegt werden, kann in
+	der Konfigurationsdatei home-preferences.conf eingestellt werden.
+  * Das Verzeichnis mit dem das Heimatverzeichnis auf dem Server 
+	verbunden ist, kann in linuxmuster-client.conf eingestellt werden.
+
+ -- Rainer Roessler <rainer@linuxmuster.de>  Tue, 13 Mai 2014 23:17:27 +0200
 =======
 linuxmuster-client-profile (0.5-precise12) precise; urgency=low
 

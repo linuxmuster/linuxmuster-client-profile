@@ -1,3 +1,9 @@
+linuxmuster-client-profile (0.6-precise4) precise; urgency=low
+
+  * linuxmuster-client.conf jetzt linuxmuster-client-shares zugeordnet
+
+ -- Rainer Rössler <rainer@linuxmuster.net>  Tue, 20 May 2014 22:00:57 +0200
+
 linuxmuster-client-profile (0.6-precise2) precise; urgency = low
 
   * etc/linuxmuster-client/post-mount.d/000-environment entfernt

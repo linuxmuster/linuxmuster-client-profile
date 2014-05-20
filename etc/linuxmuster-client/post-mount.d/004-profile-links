@@ -36,9 +36,30 @@ fi
 # (z.B. "firefox:.mozilla/firefox/123xyz.default"
 #  oder "libreoffice:.config/libreoffice").
 
-SERVEREINSTELLUNGEN="Home_auf_Server/Einstellungen"
+# Konfiguration einlesen für                                                                                                         
+# Basics zu linuxmuster-clients                                                                                                      
+. /etc/linuxmuster-client/linuxmuster-client.conf || exit 1
+# Verzeichnis für Einstellungen im Heimatverzeichnis auf dem Server                                                                  
+. /etc/linuxmuster-client/profile/home-preference.conf || exit 1                                                                     
+# Verzeichnisnamen über Links                                                                                                        
+#. /etc/linuxmuster-client/shares/linkfoldername.conf || exit 1
+
 # Hier ist der Ort anzugeben, an dem die Konfigurationen
 # auf dem Server liegen
+#SERVEREINSTELLUNGEN="Home_auf_Server/Einstellungen"
+SERVEREINSTELLUNGEN=`echo $HOMEFOLDERNAME/$HOMEPREFERENCEFOLDERNAME`
+
+# Die Variable $HOMEDIR wird übergreifend gesetzt
+# daher auskommentiert
+#HOMEDIR="`pwd`"
+ 
+# Dieses Script soll nur einmal ausgeführt werden.
+# Nur nachdem das Serverhome des Benutzers gemountet wurde,
+# sind $USER und $VOLUME identisch, in allen anderen Fällen
+# bricht das Script ab.
+if [ $USER != $VOLUME ]; then
+    return 0
+fi
 
 # Ist das Verzeichnis $SERVEREINSTELLUNGEN nicht vorhanden, 
 # wird es angelegt
@@ -49,19 +70,10 @@ else
  mkdir -p $HOMEDIR/$SERVEREINSTELLUNGEN
 fi
 
-# Die Variable $HOMEDIR wird übergreifend gesetzt
-# daher auskommentiert
-# HOMEDIR="`pwd`"
- 
-
-# Dieses Script soll nur einmal ausgeführt werden.
-# Nur nachdem das Serverhome des Benutzers gemountet wurde,
-# sind $USER und $VOLUME identisch, in allen anderen Fällen
-# bricht das Script ab.
-if [ $USER != $VOLUME ]; then
-    return 0
-fi
-
+# Um in den Schleifen Inhalte mit Leerzeichen verarbeiten zu können,
+# die durch das Leerzeichen nicht als getrennte Inhalte interpretiert werden
+# wird folgende Option IFS=$'\012' gesetzt
+IFS=$'\012'
 
 # Serverkonfigurationen nach ZWANGSLINKS erzeugen
 
@@ -77,7 +89,7 @@ for ZWANG in $ZWANGSLINKS; do
  # (also das lokal vorhandene) kopiert.
 
  # Konfigurationsverzeichnisse
-    
+
  if [ -d `echo $HOMEDIR/$SERVEREINSTELLUNGEN/$SERVER` ]
  then
   cd $HOMEDIR
@@ -117,6 +129,7 @@ for ZWANG in $ZWANGSLINKS; do
  
 done
 
+
 # Konfigurationen im Serverhome erzeugt
 
 
@@ -127,11 +140,11 @@ done
 # verlinkt).
 
 # Alle Dateien im Serverhome unter Einstellungen werden eingelesen
-ZIELE=`ls -a $HOMEDIR/$SERVEREINSTELLUNGEN/`
+ZIELE=`ls -A $HOMEDIR/$SERVEREINSTELLUNGEN/`
 
 # ". .." werden entfernt
-ZIELE=`echo $ZIELE | cut -b 6-`
-
+#ZIELE=`echo $ZIELE | cut -b 6-`
+# mit Option -A nicht mehr notwendig
 
 # Alle vorgesehenen Konfigurationen einlesen
 # ist ein "ALL:ALL" enthalten?
@@ -148,23 +161,27 @@ ALLEKONF=`echo $ZWANGSLINKS $OPTLINKS`
 # lokalen home verlinkt, sofern entsprechende Einträge (ALLE=0)
 # oder "ALL:ALL" gefunden wird (ALLE=1).
 
-#echo $ZIELE
-
 for LINKZIEL in $ZIELE; do
 
  if [ "`echo $ALLEKONF | grep $LINKZIEL`" = "" ]
  then
-  # keine Konfiguration gesetzt, Link setzen, wenn "ALL:ALL" gesetzt (ALLE=1)
+  # wenn keine Konfiguration gesetzt ist und
+  # "ALL:ALL" gesetzt (-> ALLE=1)
+  # wird der Link 1:1 gesetzt (LINKZIEL <-> LINKZIEL)
   if [ "$ALLE" = "1" ]
   then
    rm -rf $HOMEDIR/$LINKZIEL
    ln -s $HOMEDIR/$SERVEREINSTELLUNGEN/$LINKZIEL $HOMEDIR/$LINKZIEL
   fi
  else 
-  # gefunden -> Ziel bestimmen -> Link setzen 
-
-  for EINZEL in $ALLEKONF; do
-
+  # anderenfalls gibt es einen Konfiguration für die Einstellungen
+  # dann wird das Ziel bestimmt und der Link gesetzt
+ 
+  # zunächst werden Zwangslinks durchsucht
+  # ein vorheriges Zusammensetzen von optionalen und Zwangslinks
+  # funktioniert nicht, das dann alles als eine Zeile interpretiert wird
+  
+  for EINZEL in $ZWANGSLINKS; do
    if [ "`echo $EINZEL | grep $LINKZIEL`" == "" ] 
    then
     cd ~
@@ -174,6 +191,19 @@ for LINKZIEL in $ZIELE; do
     ln -s $HOMEDIR/$SERVEREINSTELLUNGEN/$LINKZIEL $HOMEDIR/$LOKAL
    fi 
   done
+  
+  # dann werden optionale Links durchsucht
+  for EINZEL in $OPTLINKS; do
+   if [ "`echo $EINZEL | grep $LINKZIEL`" == "" ] 
+   then
+    cd ~
+   else
+    LOKAL=`echo $EINZEL | cut -d ":" -f 2`
+    rm -rf $HOMEDIR/$LOKAL
+    ln -s $HOMEDIR/$SERVEREINSTELLUNGEN/$LINKZIEL $HOMEDIR/$LOKAL
+   fi 
+  done
+
   
  fi
 

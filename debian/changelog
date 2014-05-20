@@ -1,20 +1,30 @@
-linuxmuster-client-profile (0.5-trusty2) trusty; urgency=low
+linuxmuster-client-profile (0.6-trusty1) trusty; urgency = low
 
-  * Added python-appindicator as dependency
-  * Changed target repo to trusty
+  * Änderungen von R. Roessler aus dem master-branch gemerged
+  * Release fuer trusty angepasst
 
- -- Frank Schiebel <frank@linuxmuster.net>  Tue, 15 Apr 2014 17:29:33 +0200
+ -- Dominik Foerderer <dominik.foerderer@windeck-gymnasium.de>  Thu, 20 May 2014 09:30:52 +0100
 
-linuxmuster-client-profile (0.5-trusty1) trusty-testing; urgency=low
+linuxmuster-client-profile (0.6-precise2) precise; urgency = low
 
-  * Setting version to trusty, creating git branch
+  * etc/linuxmuster-client/post-mount.d/000-environment entfernt
+	(ist jetzt im Paket linuxmuster-client-share)
 
- -- Frank Schiebel <frank@linuxmuster.net>  Sun, 02 Mar 2014 15:05:51 +0100
+ -- Rainer Roessler <rainer@linuxmuster.net>  Wed, 14 May 2014 01:22:52 +0200
+
+linuxmuster-client-profile (0.6-precise1) precise; urgency=low
+
+  * Leerzeichen in Namen von Konfigurationsdateien werden unterstützt
+  * Konfigurationsdatei linuxmuster-client.conf mit Basiskonfiguration
+  * Konfigurationsdatei home-preference.conf um Einstellungsverzeichnis 
+	konfigurierbar zu machen
+
+ -- Rainer Roessler <rainer@linuxmuster.net>  Wed, 14 May 2014 00:39:08 +0200
 
 linuxmuster-client-profile (0.5-precise12) precise; urgency=low
 
   * wildcard-Eintrag in usersettings-opt.conf fuehrte zu einem Fehlschlagen als
-  * wildcard für Profile - ersetzt durch ALL:ALL
+  * wildcard für Profile - ersetzt durch ALL:ALL 
 
  -- Rainer Roessler <roesslerrr@web.de>  Thu, 07 Feb 2013 16:57:13 +0100
 

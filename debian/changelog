@@ -1,3 +1,9 @@
+linuxmuster-client-profile (0.6-trusty2) trusty; urgency = low
+
+  * Anpassung der Versionsnummer
+
+ -- Dominik Foerderer <dominik.foerderer@windeck-gymnasium.de>  Thu, 20 May 2014 17:00:52 +0100
+
 linuxmuster-client-profile (0.6-trusty1) trusty; urgency = low
 
   * Änderungen von R. Roessler aus dem master-branch gemerged

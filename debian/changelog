@@ -2,6 +2,7 @@ linuxmuster-client-profile (0.6-trusty5) trusty; urgency=low
 
   * linuxmuster-client.conf jetzt linuxmuster-client-shares zugeordnet
   * Standardpaket für trusty
+  * Skript zur Erzeugung des precise Pakets
 
  -- Rainer Rössler <rainer@linuxmuster.net>  Tue, 20 May 2014 22:00:57 +0200
 

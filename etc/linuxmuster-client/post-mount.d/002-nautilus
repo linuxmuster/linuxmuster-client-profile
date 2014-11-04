@@ -11,5 +11,5 @@ if [ $USER != $VOLUME ]; then
 fi
 
 # Action starts here
-linktargets=read_simple_config ${CONFDIR}/nautilus-bookmarks.conf
+linktargets=$(read_simple_config ${CONFDIR}/nautilus-bookmarks.conf)
 $LOGGING && msg2log post-mount $linktargets

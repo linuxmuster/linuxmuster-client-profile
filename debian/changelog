@@ -1,4 +1,4 @@
-linuxmuster-client-profile (0.6-trusty6) trusty; urgency=low
+linuxmuster-client-profile (0.6-trusty7) trusty; urgency=low
 
   * /etc/linuxmuster-client/pre-mount.d/001-profilecopy entfernt
 	zuvor wurde 001-profilecopy ersetzt durch 

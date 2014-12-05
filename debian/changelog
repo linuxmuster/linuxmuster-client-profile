@@ -1,3 +1,12 @@
+linuxmuster-client-profile (0.6-trusty6) trusty; urgency=low
+
+  * /etc/linuxmuster-client/pre-mount.d/001-profilecopy entfernt
+	zuvor wurde 001-profilecopy ersetzt durch 
+	010-profilecopy und 020-chmod-user 
+	(gleicher Inhalt aufgeteilt, um Anpassungen dazwischen zu ermöglichen)
+
+ -- Rainer Roessler <rainer@linuxmuster.net>  Fri, 05 Dec 2014 16:18:57 +0100
+
 linuxmuster-client-profile (0.6-trusty5) trusty; urgency=low
 
   * linuxmuster-client.conf jetzt linuxmuster-client-shares zugeordnet

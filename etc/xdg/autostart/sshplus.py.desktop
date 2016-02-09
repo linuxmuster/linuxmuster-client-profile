@@ -3,7 +3,7 @@
 Type=Application
 Exec=/usr/bin/sshplus.py
 Hidden=false
-NoDisplay=false
+NoDisplay=true
 X-GNOME-Autostart-enabled=true
 Name[de_DE]=SSHPlus User-Menu
 Name=SSHPlus User-Menu

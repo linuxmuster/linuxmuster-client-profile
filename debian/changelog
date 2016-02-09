@@ -1,8 +1,14 @@
+linuxmuster-client-profile (0.6-xenial2) xenial-testing; urgency=medium
+
+  * Small fixes
+
+ -- Dominik Foerderer <dominik.foerderer@windeck-gymnasium.de>  Thu, 09 Feb 2016 10:56:43 +0100
+ 
 linuxmuster-client-profile (0.6-xenial1) xenial-testing; urgency=medium
 
-  * Release für xenial xerus
+  * First release für xenial xerus
 
- -- Dominik Foerderer <dominik.foerderer@windeck-gymnasium.de>  Wed, 03 Wed 2016 12:26:43 +0100
+ -- Dominik Foerderer <dominik.foerderer@windeck-gymnasium.de>  Wed, 03 Feb 2016 12:26:43 +0100
  
 linuxmuster-client-profile (0.6-trusty8) trusty; urgency=medium
 

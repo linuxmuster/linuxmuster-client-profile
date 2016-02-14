@@ -4,10 +4,15 @@
 $LOGGING && msg2log post-mount "Entering 002-nautilus $1 $2"
 $LOGGING && msg2log post-mount "Environment settings are: USER=$USER VOLUME=$VOLUME MNPT=$MNTPT OPTIONS=$OPTIONS SERVER=$SERVER NUMUID=$NUMUID NUMPRIGID=$NUMPRIGID FULLNAME=$FULLNAME HOMEDIR=$HOMEDIR LOGINSHELL=$LOGINSHELL"
 
-# this script gets executed only once, after the users home from the
-# server gets mounted. in this case $USER and $VOLUME are the same
-if [ $USER != $VOLUME ]; then
-    return 0
+# this script should only get executed once, before the users home from the
+# server gets mounted. In this case $USER and $VOLUME are the same.
+# $USER and $VOLUME can also be the same, when mounting $VOLUME from a different server,
+# thus return if $USER and $VOLUME are different or if the serverip is different from the serverip of the main server
+requestserverip=$(gethostip $SERVER | awk '{print $2}')
+lmlserverip=$(grep "^uri\ ldap://" /etc/ldap.conf | head -n 1 | sed "s@^uri\ ldap://@@;s@/.*@@")
+if [ $USER != $VOLUME -o $lmlserverip != $requestserverip ]; then
+   msg2log pre-mount "LML: $lmlserverip, Request: $requestserverip"
+   return 0
 fi
 
 # Action starts here

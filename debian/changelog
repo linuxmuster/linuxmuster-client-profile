@@ -1,3 +1,11 @@
+linuxmuster-client-profile (0.6-xenial3) xenial-testing; urgency=medium
+
+  * Merge Pull Request: 
+  * Allow mount volume from a diffrent server
+  * check if Home_auf_Server is empty before sync to prevent data loss
+
+ -- Dominik Foerderer <dominik.foerderer@windeck-gymnasium.de>  Wed, 24 Feb 2016 09:42:43 +0100
+ 
 linuxmuster-client-profile (0.6-xenial2) xenial-testing; urgency=medium
 
   * Small fixes

@@ -1,3 +1,9 @@
+linuxmuster-client-profile (0.6-xenial4) xenial; urgency=medium
+
+  * stable release
+
+ -- Dominik Foerderer <dominik.foerderer@windeck-gymnasium.de>  Mon, 18 Apr 2016 12:36:43 +0100
+ 
 linuxmuster-client-profile (0.6-xenial3) xenial-testing; urgency=medium
 
   * Merge Pull Request: 
